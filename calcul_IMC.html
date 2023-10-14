@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>projet</title>
+	<style type="text/css">
+		body{
+			background-color: yellow;
+			display:flex;
+			align-items: center;
+			justify-content: center;
+			height: 100wh;
+
+		}
+		form{
+			display: flex;
+			flex-direction: column;
+			background-color: #fff;
+			padding:10px;
+			border-radius: 6px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+		}
+		
+		
+
+	</style>
+</head>
+<body>
+
+	
+
+	<form>
+		<label for="genre">genre:</label>
+		<select id="genre">
+			<option value="Homme">Homme</option>
+			<option value="Femme">Femme</option>
+		
+		</select>
+
+		<br>
+
+		<label for="masse">masse(kg):</label>
+		<input type="number" name="masse(kg)" id="masse">
+
+		<br>
+
+		<label for="taille">taille(cm):</label>
+		<input type="number" name="taille(cm)" id="taille">
+
+		<br>
+
+		<button onclick="calculerIMC()">Calculer l'IMC</button>
+		<button onclick ="effacer()">Effacer</button>
+
+		<br>
+
+		<div id ="resultat"></div>
+		
+	</form>
+	<script type="text/javascript">
+		function calculer IMC(){
+			debugger;
+			let masse = document.getElementById("masse").value;
+			let taille = document.getElementById("taille").value;
+			let IMC = masse / ((taille)*(taille));
+			let resultat = "";
+			   document.getElementById("resultat").innerHTML = "Ton IMC est de "+ imc.toFixed(2) + ".Tu es " + resultat +".";
+		 
+		
+		
+
+		}
+		function effacer(){
+        document.getElementById("genre").value="homme";
+        document.getElementById("taille").value="";
+        document.getElementById("masse").value="";
+        document.getElementById("resultat").innerHTML="";
+    
+       }
+		
+		
+	</script>
+
+	<nav>
+    <ul>
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="calcul_IMC.html">Calcul de l'IMC</a></li>
+        <li><a href="connexion.html">connexion</a></li>
+</nav>
+
+
+	
+</body>
+</html>
