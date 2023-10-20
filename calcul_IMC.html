@@ -1,96 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>projet</title>
-	<style type="text/css">
-		body{
-			background-color: yellow;
-			display:flex;
-			align-items: center;
-			justify-content: center;
-			height: 100wh;
+    <title>Calcul IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color:rgb(46, 148, 173) ;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-		}
-		form{
-			display: flex;
-			flex-direction: column;
-			background-color: #fff;
-			padding:10px;
-			border-radius: 6px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
-		}
-		
-		
+        .menu {
+            background-color: rgb(46, 148, 173);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        /* Style pour la section IMC */
+.imc-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+}
+    input[type="number"], select{
+            margin-bottom: 10px;
+        }
 
-	</style>
-</head>
+/* Style pour les boutons */
+button {
+    background-color: rgb(46, 148, 173);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: rgb(46, 148, 173);
+}
+    </style>
+
 <body>
+    <header>
+        <h1>Calcul IMC</h1>
+    </header>
+        <div class="menu">
+                <a href="accueil.html">Accueil</a>
+                <a href="calcul-imc.html">Calcul IMC</a>
+                <a href="connexion.html">Connexion</a>
+        </div>
 
-	
+    <div class="imc-container">
+        <label for="genre">Genre :</label>
+        <select id="genre">
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
+        </select>
+        <br>
 
-	<form>
-		<label for="genre">genre:</label>
-		<select id="genre">
-			<option value="Homme">Homme</option>
-			<option value="Femme">Femme</option>
-		
-		</select>
+        <label for="taille">Taille (en cm) :</label>
+        <input type="number" id="taille" required><br>
 
-		<br>
+        <label for="masse">Masse (en kg) :</label>
+        <input type="number" step="0.1" id="masse" required><br>
 
-		<label for="masse">masse(kg):</label>
-		<input type="number" name="masse(kg)" id="masse">
+        <button id="calculer-imc">Calculer l'IMC</button>
+        <button id="effacer">Effacer</button>
 
-		<br>
+        <div id="resultat-imc"></div>
+    </div>
 
-		<label for="taille">taille(cm):</label>
-		<input type="number" name="taille(cm)" id="taille">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const calculerIMC = document.getElementById('calculer-imc');
+    const effacer = document.getElementById('effacer');
+    const resultatIMC = document.getElementById('resultat-imc');
 
-		<br>
+    calculerIMC.addEventListener('click', function () {
+        const genre = document.getElementById('genre').value;
+        const taille = parseFloat(document.getElementById('taille').value);
+        const masse = parseFloat(document.getElementById('masse').value);
 
-		<button onclick="calculerIMC()">Calculer l'IMC</button>
-		<button onclick ="effacer()">Effacer</button>
+        if (isNaN(taille) || isNaN(masse)) {
+            resultatIMC.innerHTML = 'Veuillez saisir une taille et une masse valides.';
+        } else {
+            const tailleMetres = taille / 100;
+            const imc = masse / (tailleMetres * tailleMetres);
 
-		<br>
+            let interpretation = '';
+            if (genre === 'homme') {
+                if (imc < 20.7) interpretation = 'Sous-poidds';
+                else if (imc >= 20.7 && imc < 26.4) interpretation = 'Poids normal';
+                else if (imc >= 26.4 && imc < 27.8) interpretation = 'Surpoids';
+                else interpretation = 'Obésité';
+            } else {
+                if (imc < 19.1) interpretation = 'Sous-poids';
+                else if (imc >= 19.1 && imc < 25.8) interpretation = 'Poids normal';
+                else if (imc >= 25.8 && imc < 27.3) interpretation = 'Surpoids';
+                else interpretation = 'Obésité';
+            }
 
-		<div id ="resultat"></div>
-		
-	</form>
-	<script type="text/javascript">
-		function calculer IMC(){
-			debugger;
-			let masse = document.getElementById("masse").value;
-			let taille = document.getElementById("taille").value;
-			let IMC = masse / ((taille)*(taille));
-			let resultat = "";
-			   document.getElementById("resultat").innerHTML = "Ton IMC est de "+ imc.toFixed(2) + ".Tu es " + resultat +".";
-		 
-		
-		
+            resultatIMC.innerHTML = Votre IMC est de ${imc.toFixed(2)} (${interpretation}).;
+        }
+    });
 
-		}
-		function effacer(){
-        document.getElementById("genre").value="homme";
-        document.getElementById("taille").value="";
-        document.getElementById("masse").value="";
-        document.getElementById("resultat").innerHTML="";
-    
-       }
-		
-		
-	</script>
+Partenaire Cas, [20/10/2023 16:28]
+effacer.addEventListener('click', function () {
+        document.getElementById('taille').value = '';
+        document.getElementById('masse').value = '';
+        resultatIMC.innerHTML = '';
+    });
+});
 
-	<nav>
-    <ul>
-        <li><a href="accueil.html">Accueil</a></li>
-        <li><a href="calcul_IMC.html">Calcul de l'IMC</a></li>
-        <li><a href="connexion.html">connexion</a></li>
-</nav>
-
-
-	
+    </script>
 </body>
 </html>

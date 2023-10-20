@@ -1,28 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<style>
+        /* Styling du menu de navigation */
+        header {
+            background-color: rgb(46, 148, 173);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+
+		
+		.menu {
+            background-color: rgb(46, 148, 173);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+		p{
+        	font-size: 25px;
+
+        }
+        ul{
+        	font-size: 25px;
+        }
+
+        h1{
+        	align-items: center;
+        }
+        
+
+        
+        
+    </style>
 </head>
 <body>
-	<h1>calcul de l'IMC</h1>
+	<header>
+		<h1>IMC</h1>
+	</header>
+	<div class="menu">
+        <a href="accueil.html">Accueil</a>
+        <a href="calcul_IMC.html">Calcul IMC</a>
+        <a href="connexion.html">Connexion</a>
+    </div>
+
+
+    <h1>IMC</h1>
 	<p>L'IMC,ou Indice de masse corporelle,est un indicateur utilise pour evaluer si une personne a un poids considere comme normal,en surpoids ou en sous-poids <br>IL est calcule en divisant la masse d'une personne en kilogrammes par le carre de sa taille en centimetres. <br>La formule de calcul de l'IMC est la suivante : <br>IMC = masse(en kg) / taille(en cm)*taille(en cm). <br>Le resultat de l'IMC permet de classer une personne dans differentes categories :</p>
 	<ul>
-		<li>IMC < 18.5 : considere comme un poids insuffisant,</li>
+		<li>IMC < 18.5 : considere comme un sous poids,</li>
+		<br>
 		<li> 18,5 <=IMC <= 24,9 : considere comme un poids normal,</li>
+			<br>
 		<li>25 <=IMC <= 29,9 : considere comme un surpoids,</li>
-		<li>IMC > 30 : considere comme une obesite,</li>
+			<br>
+		<li>30 <=IMC <= 34,9 : considere comme une obesite,</li>
+			<br>
+		<li>IMC <35 : considere comme une obesite extreme,</li>
+			<br>
+
 	</ul>
+
+
+	<img src="img/capture.PNG" alt="image" width="100%">
+
 	<p>IL est important de noter que l'IMC est un indicateur general et ne tient pas compte de la repartition de la masse musculaire et de la masse graisseuse dans le corps. <br>Il est donc possible que des personnes ayant une forte musculaire obtiennent un IMC eleve sans pour autant etre en surpoids.</p>
 
 
-	<nav>
-    <ul>
-        <li><a href="accueil.html">Accueil</a></li>
-        <li><a href="calcul_IMC.html">Calcul de l'IMC</a></li>
-        <li><a href="connexion.html">connexion</a></li>
-</nav>
+	
+
 
 
 	
@@ -30,4 +87,5 @@
 
 
 </body>
+
 </html>
